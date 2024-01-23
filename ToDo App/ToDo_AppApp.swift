@@ -10,11 +10,15 @@ import SwiftUI
 @main
 struct ToDo_AppApp: App {
     let persistenceController = PersistenceController.shared
+    @StateObject private var alternateIcons = AlternateIcons()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(alternateIcons)
         }
     }
 }
+
+
